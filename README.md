@@ -38,7 +38,7 @@ The app connects to a provided Klaviyo account (seeded with test data) via a pri
         
 - 🔁 **Push updates** to the Klaviyo API with one click
 
-## Dynamic Dashboard
+## 📊 Dynamic Dashboard
 
 - Metric Smart Cards
 - Select All Checkbox 
@@ -54,7 +54,7 @@ The app connects to a provided Klaviyo account (seeded with test data) via a pri
 
 ```bash
 git clone https://github.com/ulricscott/profile-property-manager.git
-cd klaviyo-profile-manager
+cd profile-property-manager
 ```
 
 ### 2. Setup environment variables
