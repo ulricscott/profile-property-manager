@@ -1,0 +1,17 @@
+.table-responsive {
+  max-height: 410px;
+  margin-top: 20px;
+}
+
+#add-tags-button {
+  margin-bottom: 10px !important;
+  margin-left: 10px !important;
+}
+
+#export-csv-button {
+  margin-bottom: 10px !important;
+}
+
+.btn-close-custom {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
