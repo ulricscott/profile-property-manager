@@ -38,7 +38,7 @@ The app connects to a provided Klaviyo account (seeded with test data) via a pri
         
 - 🔁 **Push updates** to the Klaviyo API with one click
 
-## 🧮 Dynamic Dashboard
+## 📊 Dynamic Dashboard
 
 - Metric Smart Cards
 - Select All Checkbox 

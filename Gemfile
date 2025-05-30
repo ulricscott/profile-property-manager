@@ -62,9 +62,6 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "rspec-rails"
   gem "capybara"
   gem "selenium-webdriver"
-  gem "webmock"  # Mock external API calls
-  gem "vcr"      # Record/replay HTTP interactions
 end
