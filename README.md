@@ -59,7 +59,7 @@ cd profile-property-manager
 
 ### 2. Setup environment variables
 
-Add your API to the SDK setup in klaviyo.rb located within config/initializers/:
+Add your Klaviyo API key to `config/initializers/klaviyo.rb`:
 
 ```ruby
 KlaviyoAPI.configure do |config|
@@ -67,9 +67,9 @@ KlaviyoAPI.configure do |config|
 end
 
 ```
-Keep the initial part of the string "Klaviyo-API-Key" in front of your actual API Key or you will experience a 401 error
+⚠️ Important: Keep the "Klaviyo-API-Key " prefix before your actual API key to avoid 401 errors.
 
-### 3. Install dependencies and setup DB
+### 3. Install dependencies
 
 ```bash
 bundle install
@@ -83,7 +83,18 @@ bin/dev
 
 This uses Rails’ new `bin/dev` to concurrently start the web and asset servers.
 
+### 5. Troubleshooting
+
+- **401 Error**: Ensure your API key includes the `"Klaviyo-API-Key "` prefix
+- **Missing profiles**: Check that your Klaviyo account has test data
+- **Tests failing**: Run `bundle exec rspec --format documentation` for detailed output
+
 ---
+## 📸 Demo
+![[dashboard-screenshot.png]]
+*Main dashboard showing profile management interface*
+
+![[dashboard-with-modal-screenshot.png]]*Main dashboard showing add tags modal*
 
 ## 📊 Usage
 
