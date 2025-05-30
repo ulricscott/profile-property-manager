@@ -91,10 +91,11 @@ This uses Rails’ new `bin/dev` to concurrently start the web and asset servers
 
 ---
 ## 📸 Demo
-![[dashboard-screenshot.png]]
+![Dashboard Screenshot](dashboard-screenshot.png)
 *Main dashboard showing profile management interface*
 
-![[dashboard-with-modal-screenshot.png]]*Main dashboard showing add tags modal*
+![Dashboard Screenshot](dashboard-with-modal-screenshot.png)
+*Main dashboard showing add tags modal*
 
 ## 📊 Usage
 
