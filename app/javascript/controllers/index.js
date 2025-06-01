@@ -4,20 +4,14 @@ import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 
 eagerLoadControllersFrom("controllers", application)
 
-window.populateModalWithSelectedProfiles = function() {
-  console.log('js populate function')
-  const selectedRows = document.querySelectorAll('tr:has(input[type="checkbox"][name="profile_ids[]"]:checked)');
-  const selectedRowsCount = selectedRows.length;
-  console.log(selectedRows)
-
+window.updateSelectedProfiles = function() {
+  const selectedRows = document.querySelectorAll('tr:has(input[type="checkbox"][name="profile_selector"]:checked)');
   const selectedIds = [];
   selectedRows.forEach((row) => {
       const secondTd = row.querySelector('td:nth-child(2)');
       const idValue = secondTd.textContent.trim();
       selectedIds.push(idValue);
   });
-
-  console.log('Selected IDs:', selectedIds);
 
   fetch('/profiles', {
     method: 'PUT',
@@ -42,11 +36,8 @@ window.populateModalWithSelectedProfiles = function() {
       console.error('Error:', error);
   });
  }
-window.openModal = function() {
-  const selectedRows = document.querySelectorAll('tr:has(input[type="checkbox"][name="profile_ids[]"]:checked)');
-  const selectedRowsCount = selectedRows.length;
-  console.log(selectedRows)
-
+window.setProfilesInModal = function() {
+  const selectedRows = document.querySelectorAll('tr:has(input[type="checkbox"][name="profile_selector"]:checked)');
   const selectedIds = [];
   selectedRows.forEach((row) => {
       const secondTd = row.querySelector('td:nth-child(2)');
@@ -65,12 +56,12 @@ window.exportCSV = function() {
 }
 
  window.addEventListener('DOMContentLoaded', function () {
-  const checkboxes = document.querySelectorAll('input[name="profile_ids[]"]');
+  const checkboxes = document.querySelectorAll('input[name="profile_selector"]');
   const selectAll = document.getElementById('select-all');
   const selectedCountEl = document.getElementById('selected-count');
 
   function updateSelectedCount() {
-    const count = document.querySelectorAll('input[name="profile_ids[]"]:checked').length;
+    const count = document.querySelectorAll('input[name="profile_selector"]:checked').length;
     selectedCountEl.textContent = count;
   }
 
@@ -80,12 +71,10 @@ window.exportCSV = function() {
   });
 
   // "Select All" checkbox logic
-  if (selectAll) {
-    selectAll.addEventListener('change', function () {
-      checkboxes.forEach(cb => cb.checked = selectAll.checked);
-      updateSelectedCount();
-    });
-  }
+  selectAll.addEventListener('change', function () {
+    checkboxes.forEach(cb => cb.checked = selectAll.checked); // set state of all checkboxes to the state of selectAll
+    updateSelectedCount();
+  });
 
   updateSelectedCount(); // Initialize on page load
 });

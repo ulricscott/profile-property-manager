@@ -7,14 +7,12 @@ class DashboardController < ApplicationController
   def index
     request = KlaviyoAPI::Profiles.get_profiles()
     @profiles = request[:data]
-    puts @profiles
     render "index"
   end
 
   def update
     failed_ids = [] # Array to be used to compare against array of attempted profile ids in order to deliver failure alert
     update_params[:profile_ids].each do |id|
-      puts id
       body = {
         data: {
           type: "profile",

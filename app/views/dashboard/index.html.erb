@@ -6,7 +6,7 @@
       <thead class="table-dark">
         <tr>
           <th class="border-0 fw-semibold">
-            <input type="checkbox" id="select-all" data-action="change->table#toggleAll">
+            <input type="checkbox" id="select-all">
           </th>
           <th class="border-0 fw-semibold">ID</th>
           <th class="border-0 fw-semibold">Email</th>
@@ -17,7 +17,7 @@
         <% @profiles.each_with_index do |profile, index| %>
           <tr>
             <td>
-              <input type="checkbox" name="profile_ids[]" value="<%= profile[:id] %>" onclick="updateSelectedCount()">
+              <input type="checkbox" name="profile_selector" value="<%= profile[:id] %>" onclick="updateSelectedCount()">
             </td>
             <td class="border-0">
               <code class="text-secondary"><%= profile[:id] %></code>
@@ -77,7 +77,7 @@
             total_profiles = @profiles.count
             tagged_profiles = @profiles.select { |p| 
               engagement = p[:attributes].try(:[], :properties).try(:[], :engagement)
-              ['very high', 'high', 'medium', 'low', 'very low'].include?(engagement&.first)
+              ['very high', 'high', 'medium', 'low', 'very low'].include?(engagement.try(:first))
             }.count
             percentage = total_profiles > 0 ? ((tagged_profiles.to_f / total_profiles) * 100).round(1) : 0
           %>
@@ -139,7 +139,7 @@
     <button id="export-csv-button" type="button" class="btn btn-secondary btn-lg rounded-pill shadow-lg px-4"onclick="exportCSV()">
       Export Full Table
     </button>
-    <button id="add-tags-button" type="button" class="btn btn-primary btn-lg rounded-pill shadow-lg px-4" data-bs-toggle="modal" data-bs-target="#add-tags-modal" onclick="openModal()">
+    <button id="add-tags-button" type="button" class="btn btn-primary btn-lg rounded-pill shadow-lg px-4" data-bs-toggle="modal" data-bs-target="#add-tags-modal" onclick="setProfilesInModal()">
       <i class="bi bi-tags me-2"></i>Add Tags
     </button>
   </div>
@@ -172,7 +172,7 @@
         <button type="button" class="btn btn-light w-25" data-bs-dismiss="modal">
           Cancel
         </button>
-        <button type="button" class="btn btn-primary w-25" onclick="populateModalWithSelectedProfiles()">
+        <button type="button" class="btn btn-primary w-25" onclick="updateSelectedProfiles()">
           OK
         </button>
       </div>
