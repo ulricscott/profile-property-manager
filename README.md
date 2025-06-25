@@ -1,7 +1,7 @@
 
 # 📄 Overview
 
-This is a full-stack Rails 8 application designed to integrate with **Klaviyo**, one of Orita's core platforms. The app allows users to manage customer profile engagement tags through a clean interface built entirely within Rails using Hotwire (Turbo + Stimulus) for reactive, single-page behavior.
+This is a full-stack Rails 8 application designed to integrate with **Klaviyo**, Klaviyo is a modern marketing automation platform that functions as an ESP with advanced customer data and segmentation capabilities. The app allows users to manage customer profile engagement tags through a clean interface built entirely within Rails using Hotwire (Turbo + Stimulus) for reactive, single-page behavior.
 
 The app connects to a provided Klaviyo account (seeded with test data) via a private API key and syncs profile data for interaction and modification.
 
